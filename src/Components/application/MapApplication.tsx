@@ -12,6 +12,16 @@ const map = new Map({
 });
 
 const MapApplication = () => {
+  const handleFocusUser = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      map.getView().animate({
+        center: [longitude, latitude],
+        zoom: 8,
+      });
+    });
+  };
   const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
   useEffect(() => {
     map.setTarget(mapRef.current);
@@ -19,14 +29,16 @@ const MapApplication = () => {
   return (
     <>
       <header>
-        <h1></h1>
+        <h1>Kommune kart</h1>
       </header>
-      <nav></nav>
-      <main>
-        <div ref={mapRef}>
-          <h1>her skal kartet være</h1>
-        </div>
-      </main>
+      <nav>
+        <a href={"#"} onClick={handleFocusUser}>
+          Focus on me
+        </a>
+      </nav>
+      <div ref={mapRef}>
+        <h1></h1>
+      </div>
     </>
   );
 };
