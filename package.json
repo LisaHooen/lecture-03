@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm test && vite build",
-    "test": "tsc --noEmit"
+    "test": "prettier --check . && tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.2.0",
