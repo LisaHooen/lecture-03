@@ -3,6 +3,7 @@ import TileLayer from "ol/layer/Tile";
 import React, { MutableRefObject, useEffect, useRef } from "react";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
+import KommuneLayerCheckbox from "../kommuner/KommuneLayerCheckbox";
 
 useGeographic();
 
@@ -35,6 +36,7 @@ const MapApplication = () => {
         <a href={"#"} onClick={handleFocusUser}>
           Focus on me
         </a>
+        <KommuneLayerCheckbox />
       </nav>
       <div ref={mapRef}>
         <h1></h1>
